@@ -1,0 +1,33 @@
+```
+search google 
+
+Phân trang offset-based:
+
+Sử dụng tham số offset và limit
+Ví dụ: SELECT * FROM products LIMIT 10 OFFSET 30
+Ưu điểm: Đơn giản, dễ triển khai
+Nhược điểm: Hiệu suất kém với dữ liệu lớn, không nhất quán khi dữ liệu thay đổi
+
+
+Phân trang cursor-based (key-based):
+
+Sử dụng giá trị của bản ghi cuối cùng làm điểm bắt đầu cho trang tiếp theo
+Ví dụ: SELECT * FROM products WHERE id > last_id ORDER BY id LIMIT 10
+Ưu điểm: Hiệu suất cao, ổn định khi dữ liệu thay đổi
+Nhược điểm: Phức tạp hơn, khó điều hướng đến trang cụ thể
+
+
+Phân trang seek-based:
+
+Tìm kiếm dựa trên khóa hoặc giá trị cụ thể
+Ví dụ: SELECT * FROM products WHERE (date, id) > (last_date, last_id) ORDER BY date, id LIMIT 10
+Ưu điểm: Hiệu suất rất tốt, hoạt động tốt với nhiều cột sắp xếp
+Nhược điểm: Triển khai phức tạp
+
+
+Phân trang dựa trên token:
+
+Sử dụng token mã hóa như điểm đánh dấu
+Ưu điểm: An toàn, che giấu thông tin nội bộ
+Nhược điểm: Yêu cầu xử lý token
+```
